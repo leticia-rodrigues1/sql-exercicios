@@ -42,6 +42,6 @@ Este repositório faz parte da minha jornada de transição para a área de Dado
 - Pandas
 - Análise de Dados
 
-## 👩‍💻 Sobre mim
+##  Sobre mim
 
 Profissional com experiência no setor bancário e atualmente em transição para a área de Dados, construindo projetos práticos para consolidar conhecimentos técnicos e compor meu portfólio.
