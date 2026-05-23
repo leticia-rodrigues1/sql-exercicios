@@ -1,0 +1,13 @@
+-- MOSTRE APENAS OS PEDIDOS COM STATUS 'PAGO'
+
+SELECT *
+FROM pedidos2
+
+SELECT *
+FROM pedidos2
+WHERE status_pedidos = 'Pago';
+
+-- QUANTOS PEDIDOS ESTÃO COMO STATUS PAGO?
+SELECT COUNT(*)
+FROM pedidos2
+WHERE status_pedidos = 'Pago'
