@@ -41,17 +41,11 @@ ORDER BY PRODUTOS.Preco DESC;
 -- Regras: Considere apenas clientes com idade entre 25 e 40 anos, calcule o faturamento de cada cidade (Quantidade × Preco), mostre somente cidades cujo faturamento total seja maior ou igual a R$ 3.000 e ordene do maior faturamento para o menor.
 -- Vou usar as 3 tabelas
 
+-- Exercício 1) 
 SELECT 
 CLIENTES.Cidade,
-SUM(PEDIDOS.Quantidade * PRODUTOS.Preco)  AS FaturamentoTotal
+COUNT(CLIENTES.IdCliente)
 FROM CLIENTES
-LEFT JOIN PEDIDOS
-ON PEDIDOS.IdCliente = CLIENTES.IdCliente
-LEFT JOIN PRODUTOS
-ON PRODUTOS.IdProduto = PEDIDOS.IdProduto
-WHERE CLIENTES.Idade BETWEEN 25 AND 40
-GROUP BY CLIENTES.Cidade
-HAVING SUM(PEDIDOS.Quantidade * PRODUTOS.Preco) >= 3000
-ORDER BY FaturamentoTotal DESC;
+
 
 
