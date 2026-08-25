@@ -109,3 +109,29 @@ HAVING COUNT(PEDIDOS.Quantidade) >= 2
 AND SUM(PEDIDOS.Quantidade * PRODUTOS.Preco) >= 2000
 ORDER BY ValorTotalGasto DESC;
 
+/* Exercício 6) Mostre a cidade, a quantidade de clientes e o faturamento total de cada cidade.
+
+Considere apenas:
+clientes com idade entre 25 e 45 anos;
+pedidos feitos a partir de 01/03/2026;
+cidades que tenham 2 ou mais clientes;
+cidades com faturamento total acima de R$ 3.000.
+
+Ordene pelo maior faturamento total para o menor.
+*/
+
+SELECT 
+CLIENTES.Cidade,
+COUNT(DISTINCT CLIENTES.IdCliente)  AS TotalClientes,
+SUM(PEDIDOS.Quantidade * PRODUTOS.Preco) AS FaturamentoTotal
+FROM CLIENTES
+LEFT JOIN PEDIDOS
+ON PEDIDOS.IdCliente = CLIENTES.IdCliente
+LEFT JOIN PRODUTOS
+ON PRODUTOS.IdProduto = PEDIDOS.IdProduto
+WHERE PEDIDOS.DataPedido >= '2026/03/01'
+AND CLIENTES.Idade BETWEEN 25 AND 45
+GROUP BY CLIENTES.Cidade
+HAVING SUM(PEDIDOS.Quantidade * PRODUTOS.Preco) > 3000
+AND COUNT( DISTINCT CLIENTES.IdCliente) >= 2
+ORDER BY FaturamentoTotal DESC;
